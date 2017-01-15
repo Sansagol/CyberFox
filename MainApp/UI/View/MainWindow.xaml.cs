@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CyberFox.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sansagol.CyberFox.SN.VK.Views
+namespace CyberFox.UI.View
 {
     /// <summary>
-    /// Interaction logic for SettingsControl.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class SettingsControl : UserControl
+    public partial class MainWindow : Window
     {
-        public SettingsControl()
+        private ViewModelBase _ViewModel = null;
+        public MainWindow(ViewModelBase vm)
         {
             InitializeComponent();
+            DataContext = _ViewModel = vm;
         }
     }
 }

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox.SN
+namespace CyberFox.SN.VK.Models
 {
-    /// <summary>Interface realize authorization classes.</summary>
-    interface ISnAuthorization
+    class VkSettingsModel
     {
-
     }
 }

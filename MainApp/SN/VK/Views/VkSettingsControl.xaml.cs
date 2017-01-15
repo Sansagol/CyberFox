@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CyberFox.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sansagol.CyberFox
+namespace CyberFox.SN.VK.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SettingsControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class VkSettingsControl : UserControl
     {
-        public MainWindow()
+        ViewModelBase _VM = null;
+        public VkSettingsControl(ViewModelBase viewModel)
         {
             InitializeComponent();
+            DataContext = _VM = viewModel;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sansagol.CyberFox.SN.VK
+namespace CyberFox.SN.VK
 {
     class Authorize: ISnAuthorization
     {

@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sansagol.CyberFox.Common
+namespace CyberFox.Common
 {
-    class ViewModelBase : INotifyPropertyChanged
+    /// <summary>Base class for all view models.</summary>
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
