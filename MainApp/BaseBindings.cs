@@ -4,6 +4,7 @@ using CyberFox.UI;
 using CyberFox.UI.Model;
 using CyberFox.UI.View;
 using CyberFox.UI.ViewModel;
+using DryIoc;
 using Sansagol.CyberFox.SN.VK;
 using System;
 using System.Collections.Generic;
@@ -17,22 +18,23 @@ namespace CyberFox
     /// <summary>
     /// It's a core class. Create bindings between all components.
     /// </summary>
-    class BaseBindings
+    class BaseBindings : IBinder
     {
+        Container _MainContainer = new Container();
+        public Container MainContainer { get { return _MainContainer; } }
+
         static List<ISettings> _SettingsControls = new List<ISettings>();
         public static List<ISettings> SettingsControls { get { return _SettingsControls; } }
 
-        public static IWindowsFactory WinFactory { get; private set; }
+        public BaseBindings()
+        {
+            _MainContainer.Register<IWindowsFactory, WindowsFactory>();
+            _MainContainer.RegisterInstance(typeof(List<ISettings>), SettingsControls);
+        }
 
         public static void Init()
         {
-            InitControllers();
-        }
-
-        private static void InitControllers()
-        {
             LoadSettingsControllers();
-            WinFactory = new WindowsFactory(SettingsControls);
         }
 
         private static void LoadSettingsControllers()

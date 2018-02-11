@@ -60,6 +60,11 @@
     <Compile Include="Common\IModelbase.cs" />
     <Compile Include="Common\RelationCommand.cs" />
     <Compile Include="Common\ViewModelBase.cs" />
+    <Compile Include="DryIoc\AsyncExecutionFlowScopeContext.cs" />
+    <Compile Include="DryIoc\Container.cs" />
+    <Compile Include="DryIoc\FastExpressionCompiler.cs" />
+    <Compile Include="DryIoc\ImTools.cs" />
+    <Compile Include="IBinder.cs" />
     <Compile Include="SN\ISettings.cs" />
     <Compile Include="SN\ISnAuthorization.cs" />
     <Compile Include="SN\VK\Authorize.cs" />
@@ -116,6 +121,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

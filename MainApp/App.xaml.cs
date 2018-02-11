@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CyberFox.UI;
+using DryIoc;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,9 +17,10 @@ namespace CyberFox
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            IBinder binder = new BaseBindings();
             BaseBindings.Init();
             base.OnStartup(e);
-            Window mainWin = BaseBindings.WinFactory.GetMainWindow();
+            Window mainWin = binder.MainContainer.Resolve<IWindowsFactory>().GetMainWindow();
             if (mainWin != null)
                 mainWin.Show();
         }
