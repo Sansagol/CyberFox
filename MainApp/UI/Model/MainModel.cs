@@ -11,12 +11,12 @@ namespace Sansagol.CyberFox.UI.Model
     class MainModel: IModelbase
     {
         IWindowsFactory _WindowsFactory = null;
+        IBinder _Binder = null;
 
-        public void Initialize(IWindowsFactory winFactory)
+        public void Initialize(IWindowsFactory winFactory, IBinder binder)
         {
-            if (winFactory == null)
-                throw new ArgumentNullException(nameof(winFactory));
-            _WindowsFactory = winFactory;
+            _WindowsFactory = winFactory ?? throw new ArgumentNullException(nameof(winFactory));
+            _Binder = binder ?? throw new ArgumentNullException(nameof(binder));
         }
 
         public void ShowSettingsWindow(bool isModal)

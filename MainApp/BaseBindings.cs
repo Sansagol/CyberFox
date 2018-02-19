@@ -30,6 +30,7 @@ namespace Sansagol.CyberFox
 
         public BaseBindings()
         {
+            _MainContainer.UseInstance(typeof(IBinder), this);
             _MainContainer.Register<IWindowsFactory, WindowsFactory>();
             _MainContainer.RegisterInstance(typeof(List<ISnSettings>), SettingsControls);
             _MainContainer.UseInstance(typeof(List<ISnWorker>), _SnWorkers);

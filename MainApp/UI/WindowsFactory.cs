@@ -14,18 +14,18 @@ namespace Sansagol.CyberFox.UI
     class WindowsFactory : IWindowsFactory
     {
         static List<ISnSettings> _SettingsControls = null;
+        IBinder _Binder = null;
 
-        public WindowsFactory(List<ISnSettings> settingsControls)
+        public WindowsFactory(List<ISnSettings> settingsControls, IBinder binder)
         {
-            if (settingsControls == null)
-                throw new ArgumentNullException(nameof(settingsControls));
-            _SettingsControls = settingsControls;
+            _SettingsControls = settingsControls ?? throw new ArgumentNullException(nameof(settingsControls));
+            _Binder = binder ?? throw new ArgumentNullException(nameof(binder));
         }
 
         public Window GetMainWindow()
         {
             MainModel mainWindowModel = new MainModel();
-            mainWindowModel.Initialize(this);
+            mainWindowModel.Initialize(this, _Binder);
             MainViewModel mainVM = new MainViewModel(mainWindowModel);
             return new MainWindow(mainVM);
         }
