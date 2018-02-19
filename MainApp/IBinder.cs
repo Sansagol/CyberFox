@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox
+namespace Sansagol.CyberFox
 {
     /// <summary>
     /// Interface represents a class which bind all rependencies.

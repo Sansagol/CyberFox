@@ -1,10 +1,10 @@
-﻿using CyberFox.Common;
-using CyberFox.SN;
-using CyberFox.UI;
-using CyberFox.UI.Model;
-using CyberFox.UI.View;
-using CyberFox.UI.ViewModel;
+﻿using Sansagol.CyberFox.UI;
+using Sansagol.CyberFox.UI.Model;
+using Sansagol.CyberFox.UI.View;
+using Sansagol.CyberFox.UI.ViewModel;
 using DryIoc;
+using Sansagol.CyberFox.Common;
+using Sansagol.CyberFox.SN;
 using Sansagol.CyberFox.SN.VK;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CyberFox
+namespace Sansagol.CyberFox
 {
     /// <summary>
     /// It's a core class. Create bindings between all components.
@@ -23,13 +23,13 @@ namespace CyberFox
         Container _MainContainer = new Container();
         public Container MainContainer { get { return _MainContainer; } }
 
-        List<ISettings> _SettingsControls = new List<ISettings>();
-        public List<ISettings> SettingsControls { get { return _SettingsControls; } }
+        List<ISnSettings> _SettingsControls = new List<ISnSettings>();
+        public List<ISnSettings> SettingsControls { get { return _SettingsControls; } }
 
         public BaseBindings()
         {
             _MainContainer.Register<IWindowsFactory, WindowsFactory>();
-            _MainContainer.RegisterInstance(typeof(List<ISettings>), SettingsControls);
+            _MainContainer.RegisterInstance(typeof(List<ISnSettings>), SettingsControls);
         }
 
         public void Init()
@@ -39,10 +39,10 @@ namespace CyberFox
 
         private void LoadSettingsControllers()
         {
-            VkSettings settings = new VkSettings();
-            settings.Initialize(Constants.SettingsDirectory);
+            ISnWorkerCreator vkCreator = new VkWorkerCreator();
+            ISnWorker vkWorker = vkCreator.GetWorker();
 
-            _SettingsControls.Add(settings);
+            _SettingsControls.Add(vkWorker.SnSettingsWorker);
         }
     }
 }

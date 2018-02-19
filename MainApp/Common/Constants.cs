@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox.Common
+namespace Sansagol.CyberFox.Common
 {
     class Constants
     {

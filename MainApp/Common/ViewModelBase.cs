@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox.Common
+namespace Sansagol.CyberFox.Common
 {
     /// <summary>Base class for all view models.</summary>
     public abstract class ViewModelBase : INotifyPropertyChanged

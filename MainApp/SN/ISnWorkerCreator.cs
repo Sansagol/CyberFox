@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox.SN.VK
+namespace Sansagol.CyberFox.SN
 {
-    class Authorize: ISnAuthorization
+    interface ISnWorkerCreator
     {
-        public void SimpleAuthorization()
-        {
-
-        }
+        ISnWorker GetWorker();
     }
 }

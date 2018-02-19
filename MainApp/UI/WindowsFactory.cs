@@ -1,7 +1,7 @@
-﻿using CyberFox.SN;
-using CyberFox.UI.Model;
-using CyberFox.UI.View;
-using CyberFox.UI.ViewModel;
+﻿using Sansagol.CyberFox.SN;
+using Sansagol.CyberFox.UI.Model;
+using Sansagol.CyberFox.UI.View;
+using Sansagol.CyberFox.UI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CyberFox.UI
+namespace Sansagol.CyberFox.UI
 {
     class WindowsFactory : IWindowsFactory
     {
-        static List<ISettings> _SettingsControls = null;
+        static List<ISnSettings> _SettingsControls = null;
 
-        public WindowsFactory(List<ISettings> settingsControls)
+        public WindowsFactory(List<ISnSettings> settingsControls)
         {
             if (settingsControls == null)
                 throw new ArgumentNullException(nameof(settingsControls));

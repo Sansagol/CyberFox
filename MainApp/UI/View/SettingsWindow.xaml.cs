@@ -1,4 +1,4 @@
-﻿using CyberFox.Common;
+﻿using Sansagol.CyberFox.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CyberFox.UI.View
+namespace Sansagol.CyberFox.UI.View
 {
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml

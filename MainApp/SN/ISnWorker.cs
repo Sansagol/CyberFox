@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sansagol.CyberFox.SN
 {
-    /// <summary>Interface realize authorization classes.</summary>
-    interface ISnAuthorization
+    interface ISnWorker
     {
-
+        ISnSettings SnSettingsWorker { get; }
+        ISnAuthorization SnAuthorizationWorker { get; }
     }
 }

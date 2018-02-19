@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox.UI
+namespace Sansagol.CyberFox.UI
 {
     /// <summary>Enum contains all types of windows.</summary>
     enum WindowType

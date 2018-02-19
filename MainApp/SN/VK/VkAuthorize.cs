@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sansagol.CyberFox.SN
+namespace Sansagol.CyberFox.SN.VK
 {
-    /// <summary>Interface realize authorization classes.</summary>
-    interface ISnAuthorization
+    class VkAuthorize: ISnAuthorization
     {
+        public void SimpleAuthorization()
+        {
 
+        }
     }
 }

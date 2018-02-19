@@ -1,4 +1,4 @@
-﻿using CyberFox.UI;
+﻿using Sansagol.CyberFox.UI;
 using DryIoc;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CyberFox
+namespace Sansagol.CyberFox
 {
     /// <summary>
     /// Interaction logic for App.xaml

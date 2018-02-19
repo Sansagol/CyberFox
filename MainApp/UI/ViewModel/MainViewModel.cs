@@ -1,5 +1,5 @@
-﻿using CyberFox.Common;
-using CyberFox.UI.Model;
+﻿using Sansagol.CyberFox.Common;
+using Sansagol.CyberFox.UI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace CyberFox.UI.ViewModel
+namespace Sansagol.CyberFox.UI.ViewModel
 {
     class MainViewModel : ViewModelBase
     {

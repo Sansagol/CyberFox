@@ -7,7 +7,7 @@
     <ProjectGuid>{02BAEF7C-9A19-401B-B43C-A6349BEADE2B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CyberFox</RootNamespace>
+    <RootNamespace>Sansagol.CyberFox</RootNamespace>
     <AssemblyName>CyberFox</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -65,15 +65,19 @@
     <Compile Include="DryIoc\FastExpressionCompiler.cs" />
     <Compile Include="DryIoc\ImTools.cs" />
     <Compile Include="IBinder.cs" />
-    <Compile Include="SN\ISettings.cs" />
+    <Compile Include="SN\ISnSettings.cs" />
     <Compile Include="SN\ISnAuthorization.cs" />
-    <Compile Include="SN\VK\Authorize.cs" />
+    <Compile Include="SN\ISnWorker.cs" />
+    <Compile Include="SN\ISnWorkerCreator.cs" />
+    <Compile Include="SN\VK\VkAuthorize.cs" />
     <Compile Include="SN\VK\Models\VkSettingsModel.cs" />
     <Compile Include="SN\VK\ViewModels\VkSettingsViewModel.cs" />
     <Compile Include="SN\VK\Views\VkSettingsControl.xaml.cs">
       <DependentUpon>VkSettingsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="SN\VK\VkSettings.cs" />
+    <Compile Include="SN\VK\VkWorker.cs" />
+    <Compile Include="SN\VK\VkWorkerCreator.cs" />
     <Compile Include="UI\IWindowsFactory.cs" />
     <Compile Include="UI\Model\MainModel.cs" />
     <Compile Include="UI\ViewModel\MainViewModel.cs" />

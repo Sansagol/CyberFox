@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace CyberFox.Common
+namespace Sansagol.CyberFox.Common
 {
     class RelationCommand : ICommand
     {

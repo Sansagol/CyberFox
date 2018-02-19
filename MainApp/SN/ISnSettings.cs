@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CyberFox.SN
+namespace Sansagol.CyberFox.SN
 {
     /// <summary>
     /// This interface reralize classes which have a settings
     /// logic for current SN.
     /// </summary>
-    public interface ISettings
+    public interface ISnSettings
     {
         /// <summary>Initialize settings method.</summary>
         /// <param name="settingsPath">Path to settings directory.</param>

@@ -1,7 +1,6 @@
-﻿using CyberFox.SN;
-using CyberFox.SN.VK.Models;
-using CyberFox.SN.VK.ViewModels;
-using CyberFox.SN.VK.Views;
+﻿using Sansagol.CyberFox.SN.VK.Models;
+using Sansagol.CyberFox.SN.VK.ViewModels;
+using Sansagol.CyberFox.SN.VK.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +11,7 @@ using System.Windows;
 
 namespace Sansagol.CyberFox.SN.VK
 {
-    class VkSettings : ISettings
+    class VkSettings : ISnSettings
     {
         private string _SettingsFile = string.Empty;
         public DependencyObject Control { get; set; }

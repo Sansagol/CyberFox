@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox.SN.VK.Models
+namespace Sansagol.CyberFox.SN.VK.Models
 {
     class VkSettingsModel
     {

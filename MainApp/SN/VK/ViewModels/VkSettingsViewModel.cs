@@ -1,12 +1,12 @@
-﻿using CyberFox.Common;
-using CyberFox.SN.VK.Models;
+﻿using Sansagol.CyberFox.Common;
+using Sansagol.CyberFox.SN.VK.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CyberFox.SN.VK.ViewModels
+namespace Sansagol.CyberFox.SN.VK.ViewModels
 {
     class VkSettingsViewModel : ViewModelBase
     {
