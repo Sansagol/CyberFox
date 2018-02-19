@@ -18,7 +18,7 @@ namespace CyberFox
         protected override void OnStartup(StartupEventArgs e)
         {
             IBinder binder = new BaseBindings();
-            BaseBindings.Init();
+            binder.Init();
             base.OnStartup(e);
             Window mainWin = binder.MainContainer.Resolve<IWindowsFactory>().GetMainWindow();
             if (mainWin != null)

@@ -12,20 +12,16 @@ namespace CyberFox.UI.ViewModel
 {
     public class SettingsViewModel : ViewModelBase
     {
-        ObservableCollection<DependencyObject> _SettingsControls =
-            new ObservableCollection<DependencyObject>();
-        public ObservableCollection<DependencyObject> SettingsControls
-        {
-            get { return _SettingsControls; }
-        }
+        public ObservableCollection<DependencyObject> SettingsControls { get; } = new ObservableCollection<DependencyObject>();
 
         public SettingsViewModel(List<ISettings> settingsControls)
         {
             if (settingsControls == null)
                 throw new ArgumentNullException(nameof(settingsControls));
+
             settingsControls.Where(s => s.Control != null)
                 .ToList()
-                .ForEach(s => _SettingsControls.Add(s.Control));
+                .ForEach(s => SettingsControls.Add(s.Control));
         }
     }
 }

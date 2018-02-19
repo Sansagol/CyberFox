@@ -23,8 +23,8 @@ namespace CyberFox
         Container _MainContainer = new Container();
         public Container MainContainer { get { return _MainContainer; } }
 
-        static List<ISettings> _SettingsControls = new List<ISettings>();
-        public static List<ISettings> SettingsControls { get { return _SettingsControls; } }
+        List<ISettings> _SettingsControls = new List<ISettings>();
+        public List<ISettings> SettingsControls { get { return _SettingsControls; } }
 
         public BaseBindings()
         {
@@ -32,12 +32,12 @@ namespace CyberFox
             _MainContainer.RegisterInstance(typeof(List<ISettings>), SettingsControls);
         }
 
-        public static void Init()
+        public void Init()
         {
             LoadSettingsControllers();
         }
 
-        private static void LoadSettingsControllers()
+        private void LoadSettingsControllers()
         {
             VkSettings settings = new VkSettings();
             settings.Initialize(Constants.SettingsDirectory);

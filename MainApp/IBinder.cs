@@ -16,5 +16,7 @@ namespace CyberFox
         /// The property gets the main DI container.
         /// </summary>
         Container MainContainer { get; }
+
+        void Init();
     }
 }
