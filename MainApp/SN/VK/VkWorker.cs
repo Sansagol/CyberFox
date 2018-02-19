@@ -12,6 +12,10 @@ namespace Sansagol.CyberFox.SN.VK
 
         public ISnAuthorization SnAuthorizationWorker { get; private set; }
 
+        public int SnId { get; } = 1;
+
+        public string SnTitle { get; } = "VK";
+
         public VkWorker(ISnSettings settsWorker, ISnAuthorization authWorker)
         {
             SnSettingsWorker = settsWorker ?? throw new ArgumentNullException(nameof(settsWorker));

@@ -26,10 +26,13 @@ namespace Sansagol.CyberFox
         List<ISnSettings> _SettingsControls = new List<ISnSettings>();
         public List<ISnSettings> SettingsControls { get { return _SettingsControls; } }
 
+        private List<ISnWorker> _SnWorkers = new List<ISnWorker>();
+
         public BaseBindings()
         {
             _MainContainer.Register<IWindowsFactory, WindowsFactory>();
             _MainContainer.RegisterInstance(typeof(List<ISnSettings>), SettingsControls);
+            _MainContainer.UseInstance(typeof(List<ISnWorker>), _SnWorkers);
         }
 
         public void Init()
@@ -42,6 +45,7 @@ namespace Sansagol.CyberFox
             ISnWorkerCreator vkCreator = new VkWorkerCreator();
             ISnWorker vkWorker = vkCreator.GetWorker();
 
+            _SnWorkers.Add(vkWorker);
             _SettingsControls.Add(vkWorker.SnSettingsWorker);
         }
     }
