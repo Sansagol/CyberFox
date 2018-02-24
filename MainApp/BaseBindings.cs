@@ -23,31 +23,21 @@ namespace Sansagol.CyberFox
         Container _MainContainer = new Container();
         public Container MainContainer { get { return _MainContainer; } }
 
-        List<ISnSettings> _SettingsControls = new List<ISnSettings>();
-        public List<ISnSettings> SettingsControls { get { return _SettingsControls; } }
-
         private List<ISnWorker> _SnWorkers = new List<ISnWorker>();
 
         public BaseBindings()
         {
             _MainContainer.UseInstance(typeof(IBinder), this);
+
             _MainContainer.Register<IWindowsFactory, WindowsFactory>();
-            _MainContainer.RegisterInstance(typeof(List<ISnSettings>), SettingsControls);
             _MainContainer.UseInstance(typeof(List<ISnWorker>), _SnWorkers);
+
+            //Register snsWorkers
+            _MainContainer.Register<ISnWorkerCreator, VkWorkerCreator>(Reuse.Singleton);
         }
 
         public void Init()
         {
-            LoadSettingsControllers();
-        }
-
-        private void LoadSettingsControllers()
-        {
-            ISnWorkerCreator vkCreator = new VkWorkerCreator();
-            ISnWorker vkWorker = vkCreator.GetWorker();
-
-            _SnWorkers.Add(vkWorker);
-            _SettingsControls.Add(vkWorker.SnSettingsWorker);
         }
     }
 }

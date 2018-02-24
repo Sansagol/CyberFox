@@ -14,7 +14,7 @@ namespace Sansagol.CyberFox.UI.ViewModel
     {
         public ObservableCollection<DependencyObject> SettingsControls { get; } = new ObservableCollection<DependencyObject>();
 
-        public SettingsViewModel(List<ISnSettings> settingsControls)
+        public SettingsViewModel(IList<ISnSettings> settingsControls)
         {
             if (settingsControls == null)
                 throw new ArgumentNullException(nameof(settingsControls));

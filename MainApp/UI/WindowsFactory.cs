@@ -8,17 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using DryIoc;
 
 namespace Sansagol.CyberFox.UI
 {
     class WindowsFactory : IWindowsFactory
     {
-        static List<ISnSettings> _SettingsControls = null;
         IBinder _Binder = null;
 
-        public WindowsFactory(List<ISnSettings> settingsControls, IBinder binder)
+        public WindowsFactory(IBinder binder)
         {
-            _SettingsControls = settingsControls ?? throw new ArgumentNullException(nameof(settingsControls));
             _Binder = binder ?? throw new ArgumentNullException(nameof(binder));
         }
 
@@ -32,7 +31,13 @@ namespace Sansagol.CyberFox.UI
 
         public Window GetSettingsWindow()
         {
-            SettingsViewModel settingsVM = new SettingsViewModel(_SettingsControls);
+            var snCreators = _Binder.MainContainer.Resolve<IEnumerable<ISnWorkerCreator>>();
+            List<ISnSettings> workers = new List<ISnSettings>();
+            foreach (ISnWorkerCreator cr in snCreators)
+            {
+                workers.Add(cr.GetWorker().SnSettingsWorker);
+            }
+            SettingsViewModel settingsVM = new SettingsViewModel(workers);
             SettingsWindow settingsWindow = new SettingsWindow(settingsVM);
             return settingsWindow;
         }
