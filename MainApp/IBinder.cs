@@ -17,6 +17,6 @@ namespace Sansagol.CyberFox
         /// </summary>
         Container MainContainer { get; }
 
-        void Init();
+        string SettingsDirectory { get; }
     }
 }

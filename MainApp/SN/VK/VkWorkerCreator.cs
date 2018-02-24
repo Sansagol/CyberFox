@@ -9,10 +9,17 @@ namespace Sansagol.CyberFox.SN.VK
 {
     class VkWorkerCreator : ISnWorkerCreator
     {
+        private IBinder _Binder;
+
+        public VkWorkerCreator(IBinder binder)
+        {
+            _Binder = binder ?? throw new ArgumentNullException(nameof(binder));
+        }
+
         public ISnWorker GetWorker()
         {
             ISnSettings settings = new VkSettings();
-            settings.Initialize(Constants.SettingsDirectory);
+            settings.Initialize(_Binder.SettingsDirectory);
             ISnAuthorization snAuthorization = new VkAuthorize();
             ISnWorker vkWorker = new VkWorker(settings, snAuthorization);
 

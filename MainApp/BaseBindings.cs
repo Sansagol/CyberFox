@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 
 namespace Sansagol.CyberFox
 {
@@ -20,6 +21,9 @@ namespace Sansagol.CyberFox
     /// </summary>
     class BaseBindings : IBinder
     {
+        /// <summary>Application custom settings directory.</summary>
+        public string SettingsDirectory { get; private set; }
+
         Container _MainContainer = new Container();
         public Container MainContainer { get { return _MainContainer; } }
 
@@ -27,6 +31,8 @@ namespace Sansagol.CyberFox
 
         public BaseBindings()
         {
+            InitConstants();
+
             _MainContainer.UseInstance(typeof(IBinder), this);
 
             _MainContainer.Register<IWindowsFactory, WindowsFactory>();
@@ -36,8 +42,11 @@ namespace Sansagol.CyberFox
             _MainContainer.Register<ISnWorkerCreator, VkWorkerCreator>(Reuse.Singleton);
         }
 
-        public void Init()
+        public void InitConstants()
         {
+            SettingsDirectory = Path.Combine(Environment.GetFolderPath(
+                Environment.SpecialFolder.ApplicationData),
+                "CyberFox");
         }
     }
 }

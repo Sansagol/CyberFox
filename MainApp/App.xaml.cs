@@ -18,7 +18,6 @@ namespace Sansagol.CyberFox
         protected override void OnStartup(StartupEventArgs e)
         {
             IBinder binder = new BaseBindings();
-            binder.Init();
             base.OnStartup(e);
             Window mainWin = binder.MainContainer.Resolve<IWindowsFactory>().GetMainWindow();
             if (mainWin != null)

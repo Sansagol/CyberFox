@@ -56,7 +56,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseBindings.cs" />
-    <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\IModelbase.cs" />
     <Compile Include="Common\RelationCommand.cs" />
     <Compile Include="Common\ViewModelBase.cs" />

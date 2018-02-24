@@ -10,6 +10,6 @@ namespace Sansagol.CyberFox.Common
 {
     interface IModelbase
     {
-        void Initialize(IWindowsFactory winFactory, IBinder binder);
+        void Initialize(IBinder binder);
     }
 }

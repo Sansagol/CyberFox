@@ -24,7 +24,7 @@ namespace Sansagol.CyberFox.UI
         public Window GetMainWindow()
         {
             MainModel mainWindowModel = new MainModel();
-            mainWindowModel.Initialize(this, _Binder);
+            mainWindowModel.Initialize(_Binder);
             MainViewModel mainVM = new MainViewModel(mainWindowModel);
             return new MainWindow(mainVM);
         }
