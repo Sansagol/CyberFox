@@ -24,7 +24,7 @@ namespace Sansagol.CyberFox
         /// <summary>Application custom settings directory.</summary>
         public string SettingsDirectory { get; private set; }
 
-        Container _MainContainer = new Container();
+        private Container _MainContainer = new Container();
         public Container MainContainer { get { return _MainContainer; } }
 
         private List<ISnWorker> _SnWorkers = new List<ISnWorker>();

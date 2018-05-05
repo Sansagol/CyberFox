@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using DryIoc;
 
 namespace Sansagol.CyberFox.CyberFoxApi
 {
@@ -16,6 +17,9 @@ namespace Sansagol.CyberFox.CyberFoxApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            IBinder binder = new BaseBindings();
+            binder.MainContainer.RegisterInstance(configuration);
         }
 
         public IConfiguration Configuration { get; }

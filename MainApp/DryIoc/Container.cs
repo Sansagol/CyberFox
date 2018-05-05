@@ -2152,22 +2152,25 @@ namespace DryIoc
                             case IfAlreadyRegistered.Replace:
                                 if (oldFactoriesEntry != null)
                                 {
-                                    var newFactories = oldFactoriesEntry.Factories;
+                                    // remove defaults but keep keyed (issue #569)
+                                    var oldFactories = oldFactoriesEntry.Factories;
+                                    var keyedFactories = ImTreeMap<object, Factory>.Empty;
                                     if (oldFactoriesEntry.LastDefaultKey != null)
                                     {
-                                        newFactories = ImTreeMap<object, Factory>.Empty;
                                         var removedFactories = ImTreeMap<object, Factory>.Empty;
-                                        foreach (var f in newFactories.Enumerate())
+                                        foreach (var f in oldFactories.Enumerate())
                                             if (f.Key is DefaultKey)
                                                 removedFactories = removedFactories.AddOrUpdate(f.Key, f.Value);
-                                            else
-                                                newFactories = newFactories.AddOrUpdate(f.Key, f.Value);
+                                            else // copy keyed to new
+                                                keyedFactories = keyedFactories.AddOrUpdate(f.Key, f.Value);
 
                                         replacedFactories = removedFactories;
+                                        if (keyedFactories.IsEmpty)
+                                            return newEntry; // the entry with all default was completely replace
                                     }
 
                                     return new FactoriesEntry(DefaultKey.Value,
-                                        newFactories.AddOrUpdate(DefaultKey.Value, newFactory));
+                                        keyedFactories.AddOrUpdate(DefaultKey.Value, newFactory));
                                 }
 
                                 replacedFactory = oldFactory;
@@ -11257,9 +11260,9 @@ namespace DryIoc
             object arg0, object arg1 = null, object arg2 = null, object arg3 = null,
             Exception innerException = null)
         {
-            var messageFormat = GetMessage(errorCheck, errorCode);
-            var message = string.Format(messageFormat, Print(arg0), Print(arg1), Print(arg2), Print(arg3));
-            return new ContainerException(errorCode, message, innerException);
+            return new ContainerException(errorCode,
+                string.Format(GetMessage(errorCheck, errorCode), Print(arg0), Print(arg1), Print(arg2), Print(arg3)),
+                innerException);
         }
 
         /// <summary>Gets error message based on provided args.</summary> <param name="errorCheck"></param> <param name="errorCode"></param>
@@ -11294,11 +11297,10 @@ namespace DryIoc
     /// <summary>Defines error codes and error messages for all DryIoc exceptions (DryIoc extensions may define their own.)</summary>
     public static class Error
     {
-        /// <summary>First error code to identify error range for other possible error code definitions.</summary>
-        public static readonly int FirstErrorCode = 0;
-
         /// <summary>List of error messages indexed with code.</summary>
         public static readonly List<string> Messages = new List<string>(100);
+
+        private static int _errorIndex = -1;
 
 #pragma warning disable 1591 // "Missing XML-comment"
         public static readonly int
@@ -11491,21 +11493,22 @@ namespace DryIoc
 #pragma warning restore 1591 // "Missing XML-comment"
 
         /// <summary>Stores new error message and returns error code for it.</summary>
-        /// <param name="message">Error message to store.</param> <returns>Error code for message.</returns>
         public static int Of(string message)
         {
-            Messages.Add(message);
-            return FirstErrorCode + Messages.Count - 1;
+            // thread-safe code to return exactly the code of set message
+            var errorIndex = Interlocked.Increment(ref _errorIndex);
+            while (errorIndex >= Messages.Count)
+                Messages.Add("^_^");
+            Messages[errorIndex] = message;
+            return errorIndex;
         }
 
         /// <summary>Returns the name for the provided error code.</summary>
-        /// <param name="error">error code.</param> <returns>name of error, unique in scope of this <see cref="Error"/> class.</returns>
-        public static string NameOf(int error)
+        public static string NameOf(int errorIndex)
         {
-            var index = error - FirstErrorCode + 1;
             var field = typeof(Error).GetTypeInfo().DeclaredFields
                 .Where(f => f.FieldType == typeof(int))
-                .Where((_, i) => i == index)
+                .Where((_, i) => i == errorIndex + 1)
                 .FirstOrDefault();
             return field != null ? field.Name : null;
         }
