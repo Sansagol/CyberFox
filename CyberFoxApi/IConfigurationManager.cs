@@ -7,5 +7,6 @@ namespace Sansagol.CyberFox.CyberFoxApi
 {
     interface IConfigurationManager
     {
+        string GetConnectionString();
     }
 }

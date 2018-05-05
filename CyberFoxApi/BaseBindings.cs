@@ -12,6 +12,7 @@ namespace Sansagol.CyberFox.CyberFoxApi
 
         public BaseBindings()
         {
+            MainContainer = new Container();
             MainContainer.Register<IConfigurationManager, ConfigManager>();
         }
     }
