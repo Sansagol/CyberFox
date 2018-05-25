@@ -3,24 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sansagol.CyberFox.CyberFoxApi.Models;
 
 namespace Sansagol.CyberFox.CyberFoxApi.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly CyberFox_DevContext _Context = null;
+        public ValuesController(CyberFox_DevContext context)
+        {
+            _Context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _Context.SnUser.Select(u => u.Name).ToList();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(string id)
         {
-            return "value";
+            var item = _Context.SnUser.FirstOrDefault(f => f.SnUserId.ToLower().Equals(id.ToLower()));
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return Json(item);
         }
 
         // POST api/values
